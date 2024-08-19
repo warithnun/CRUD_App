@@ -56,8 +56,9 @@ exports.update = async (req, res) => {
 }
 exports.remove = async (req, res) => {
     try {
-        //code
-        res.send('Hello Delete')
+        const id = req.params.id
+        const removed = await Product.findOneAndDelete({_id:id}).exec()
+        res.send(removed)
 
     } catch (err) {
         // error
